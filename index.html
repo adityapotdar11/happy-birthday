@@ -91,7 +91,13 @@
             }
             @media screen and (max-width: 767px) {
                 .birthday-heading {
-                    font-size: 1.5rem;
+                    font-size: 1.75rem;
+                }
+                h4 {
+                    font-size: 1.2rem;
+                }
+                .container {
+                    height: 90vh;
                 }
             }
         </style>
@@ -100,21 +106,21 @@
         <div class="container">
             <div class="birthday-sec">
                 <h1 class="birthday-heading text-center">
-                    Happy Birthday to Me!
+                    Happy Birthday to You!
                 </h1>
-                <h4 class="text-center">On 10<sup>th</sup> March</h4>
+                <h4 class="text-center">
+                    <span id="day"></span><sup>th</sup>
+                    <span id="month"></span>
+                </h4>
                 <div class="img-container">
                     <img
-                        src="https://i.scdn.co/image/ab67616d0000b27379b47a094f52cad8236dea8a"
+                        src="https://gifdb.com/images/high/birthday-candles-on-chocolate-cake-3gjwquodojwqzdhe.gif"
                         alt=""
                     />
                 </div>
             </div>
             <audio id="bg-music" loop>
-                <source
-                    src="Mann-Jhoom-Jhoom-Tann-Jhoom-Jhoom.mp3"
-                    type="audio/mpeg"
-                />
+                <source src="hbd.mp3" type="audio/mpeg" />
                 Your browser does not support the audio element.
             </audio>
 
@@ -156,9 +162,20 @@
                     ></rect>
                 </svg>
             </button>
-
+            <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js"
+                integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg=="
+                crossorigin="anonymous"
+                referrerpolicy="no-referrer"
+            ></script>
             <script>
                 document.querySelector("#pause-btn").style.display = "none";
+                var date = moment();
+                var currentDate = date.format("D");
+                var currentMonth = date.format("MMMM");
+                console.log(currentDate, currentMonth);
+                document.querySelector("#day").innerHTML = currentDate;
+                document.querySelector("#month").innerHTML = currentMonth;
                 function playBackgroundMusic() {
                     var audio = document.getElementById("bg-music");
                     audio.play();
